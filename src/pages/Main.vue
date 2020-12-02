@@ -3,7 +3,9 @@
         <menu-list class="menu" />
 
         <navibar class="navibar" />
-        <router-view class="content" />
+        <keep-alive>
+          <router-view class="content" />
+        </keep-alive>
 
     </div>
 </template>
