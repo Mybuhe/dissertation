@@ -23,7 +23,7 @@ export default new Router({
       },
       children:[
         {
-          path: 'student1',
+          path: 'student',
           name: 'student',
           component:() => import("@/pages/UserManagement/Student/index"),
           meta:{
