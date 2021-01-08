@@ -1,10 +1,8 @@
 <template>
     <div>
         <el-button @click="myclick(123)" >
-            <myform />默认按钮</el-button>
+            <myform :a="dialogVisible" v-on:heartChange="myclick"  />默认按钮</el-button>
 
-
-    
 
         <!-- <el-dialog
             title="提示"
@@ -49,7 +47,7 @@ export default {
   components: { myform },
     data(){
         return {
-            dialogVisible:false,
+            dialogVisible:true,
             input:null,
             time:'',
             value: '',
@@ -63,7 +61,8 @@ export default {
     },
     methods:{
         myclick(e){
-            this.dialogVisible = true
+            console.log(e)
+            this.dialogVisible = e
         }
     }
 }
