@@ -79,6 +79,22 @@ export default new Router({
           },
         }
       ]
+    },
+    {
+      path: '/new-test',
+      component: Main,
+      meta:{
+        title:"新建测试"
+      },
+      children:[
+        {
+          path: 'new-study',
+          component:() => import("@/pages/NewTest/NewStudy/index"),
+          meta:{
+            title:"study"
+          },
+        }
+      ]
     }
   ]
 })
