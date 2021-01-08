@@ -205,6 +205,7 @@
 </template>
 
 <script>
+import { GetAllStudentData } from '@/api/student'
 import FormDialog from "./form";
 import qs from 'qs'
 import download from '@/pages/component/download'
@@ -314,10 +315,8 @@ methods:{
   },
   getStudent(){
     
-    this.$axios.defaults.headers['Content-Type'] = 'application/json'
     // this.$axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-
-    this.$axios.get("/api/student/findAll",{params:{currentPage: this.pageHelperData.count, pageSize: this.pageHelperData.size}}).then(e=>{
+    GetAllStudentData({currentPage: this.pageHelperData.count, pageSize: this.pageHelperData.size}).then(e=>{
       this.studentData = e.data.data.rows
       this.pageHelperData.total = e.data.data.total
     })
