@@ -235,15 +235,16 @@ data(){
 },
 mounted(){
   // 页面一开始加载，只加载一次
-  alert("这里开始渲染了")
   this.getStudent()
   this.getSubjectTopic()
+  this.rander()
 },
 // watch 比较灵活一点
 watch:{
   // 如果 值相同不会触发，如果值改变了才会触发
   value:function(e){
     console.log(e)
+    this.rander()
   }
 },
 // 如果 值相同不会触发，如果值改变了才会触发
@@ -255,6 +256,9 @@ computed: {
     }
 },
 methods:{
+  rander(){
+    alert("这里开始渲染了")
+  },
   uploadExcelClose(){
     this.uploadExcel = false
   },
@@ -352,6 +356,7 @@ methods:{
     
   }
 },
+//加载一个组件，渲染到页面
 components: {
     FormDialog
 }
