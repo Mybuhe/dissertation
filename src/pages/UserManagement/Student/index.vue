@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{reversedMessage}}
     <el-row class="buttons-row">
       <el-button type="primary" @click="addStudent">添加</el-button>
       <el-button type="primary" @click="deleteStudent" >删除</el-button>
@@ -26,6 +27,7 @@
         <el-select v-model="value" placeholder="选择系别">
         <el-option
         v-for="(item,index) in options"
+        :key="index"
         :label="item.label"
         :value="item.value">
         </el-option>
@@ -232,14 +234,25 @@ data(){
   }
 },
 mounted(){
+  // 页面一开始加载，只加载一次
+  alert("这里开始渲染了")
   this.getStudent()
   this.getSubjectTopic()
 },
+// watch 比较灵活一点
 watch:{
   // 如果 值相同不会触发，如果值改变了才会触发
   value:function(e){
     console.log(e)
   }
+},
+// 如果 值相同不会触发，如果值改变了才会触发
+computed: {
+    // 计算属性的 getter
+    reversedMessage: function () {
+      // `this` 指向 vm 实例
+      return this.value.split('').reverse().join('')
+    }
 },
 methods:{
   uploadExcelClose(){
