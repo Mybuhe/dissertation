@@ -25,8 +25,7 @@
       </el-select>
         <el-select v-model="value" placeholder="选择系别">
         <el-option
-        v-for="item in options"
-        :key="item.value"
+        v-for="(item,index) in options"
         :label="item.label"
         :value="item.value">
         </el-option>
@@ -226,13 +225,21 @@ data(){
     tableForm:{},
     value: "",
     options: [
-        {value: "11", label: "11"}
+        {value: "11", label: "11"},
+         {value: "22", label: "22"},
+          {value: "33", label: "22"},
     ]
   }
 },
 mounted(){
   this.getStudent()
   this.getSubjectTopic()
+},
+watch:{
+  // 如果 值相同不会触发，如果值改变了才会触发
+  value:function(e){
+    console.log(e)
+  }
 },
 methods:{
   uploadExcelClose(){
